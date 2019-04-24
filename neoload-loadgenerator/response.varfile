@@ -1,0 +1,13 @@
+# install4j response file for NeoLoad LG
+executeLauncherAction$Boolean=false
+installService$Boolean=false
+startOnBootUp$Boolean=false
+sys.adminRights$Boolean=false
+sys.component.Common$Boolean=true
+sys.component.Controller$Boolean=false
+sys.component.Controller\ Agent$Boolean=false
+sys.component.Load\ Generator$Boolean=true
+sys.component.Monitor\ Agent$Boolean=false
+sys.installationTypeId=Load Generator
+sys.languageId=en
+sys.programGroupDisabled$Boolean=true

@@ -1,0 +1,179 @@
+  <logkit logger="system.logkit" log-level="INFO"
+     manager-class="org.apache.avalon.excalibur.logger.LogKitLoggerManager">
+  
+      <factories>
+        <factory type="file"
+             class="com.neotys.nl.common.logging.docker.DockerTargetFactory"/>
+      </factories>
+  
+      <targets>
+        <file id="logFile" >
+           <append>true</append>
+           <filename>${userAppDir}/logs/neoload.log</filename>
+           <format type="pattern">
+%{time:yyyy/MM/dd HH:mm:ss} %5.5{priority} - %{category}: %{message} %{throwable}\n
+           </format>
+        </file>
+        
+        <file id="agentFile" >
+           <append>true</append>
+           <filename>${userAppDir}/logs/agent.log</filename>
+           <format type="pattern">
+%{time:yyyy/MM/dd HH:mm:ss} %5.5{priority} - %{category}: %{message} %{throwable}\n
+           </format>
+        </file>
+
+        <file id="monitor-agentFile" >
+           <append>true</append>
+           <filename>${userAppDir}/logs/monitoring-agent.log</filename>
+           <format type="pattern">
+%{time:yyyy/MM/dd HH:mm:ss} %5.5{priority} - %{category}: %{message} %{throwable}\n
+           </format>
+        </file>
+        
+        <file id="pluginsFile" >
+           <append>false</append>
+           <filename>${userAppDir}/logs/plugins.log</filename>
+           <format type="pattern">
+%{time:yyyy/MM/dd HH:mm:ss} %5.5{priority} - %{category}: %{message} %{throwable}\n
+           </format>
+           <rotation type="revolving" init="1" max="3">
+      				<size>1m</size>
+      		 </rotation>
+        </file>  
+		
+        <file id="teamFile" >
+           <append>true</append>
+           <filename>${userAppDir}/logs/team.log</filename>
+           <format type="pattern">
+%{time:yyyy/MM/dd HH:mm:ss} %5.5{priority} - %{category}: %{message} %{throwable}\n
+           </format>
+        </file>
+      </targets>
+  
+      <categories>
+        <!--
+                Notes:
+                * must define the default category, i.e. where name = "" 
+                * each log-target id-ref must refer to a valid file entry
+                -->
+        <category name="" log-level="INFO">
+          <log-target id-ref="logFile"/>
+        </category>
+        
+        <category name="neoload" log-level="INFO">
+          <log-target id-ref="logFile"/>
+        </category>
+        
+        <category name="neoload.HTMLParser" log-level="ERROR">
+          <log-target id-ref="logFile"/>
+        </category>
+        
+        <category name="neoload.Proxy" log-level="ERROR">
+          <log-target id-ref="logFile"/>
+        </category>
+		
+		<category name="neoload.Agents" log-level="ERROR">
+          <log-target id-ref="logFile"/>
+        </category>
+        
+        <category name="neoload.SSL" log-level="ERROR">
+          <log-target id-ref="logFile"/>
+        </category>
+        
+        <category name="neoload.Recorder" log-level="ERROR">
+          <log-target id-ref="logFile"/>
+        </category>
+
+        <category name="neoload.Recorder.Sap" log-level="DEBUG">
+           <log-target id-ref="logFile"/>
+        </category>
+        
+        <category name="neoload.IPFW" log-level="WARN">
+          <log-target id-ref="logFile"/>
+        </category>
+        
+        <category name="neoload.windows" log-level="WARN">
+          <log-target id-ref="logFile"/>
+        </category>
+        
+        <!-- DEBUG to retrieve all monitorEngine remote logs -->
+        <category name="neoload.RemoteMonitorEngine" log-level="DEBUG">
+          <log-target id-ref="logFile"/>
+        </category>
+        
+ 		<category name="neoload.agent" log-level="WARN">
+          <log-target id-ref="agentFile"/>
+        </category>
+        
+        <category name="neoload.agent.Agent" log-level="INFO">
+          <log-target id-ref="agentFile"/>
+        </category>
+		
+		<category name="neoload.monitor.agent" log-level="WARN">
+          <log-target id-ref="monitor-agentFile"/>
+        </category>
+        
+        <category name="neoload.monitor.agent.MonitorAgent" log-level="INFO">
+          <log-target id-ref="monitor-agentFile"/>
+        </category>
+		
+		<category name="neoload.team.svn" log-level="ERROR">
+          <log-target id-ref="teamFile"/>
+        </category>
+        
+        <category name="neoload.team.git" log-level="ERROR">
+          <log-target id-ref="teamFile"/>
+        </category>
+
+		<category name="neoload.team.advanced.svn" log-level="ERROR">
+          <log-target id-ref="teamFile"/>
+        </category>
+
+		<category name="neoload.team.conf" log-level="ERROR">
+          <log-target id-ref="teamFile"/>
+        </category>
+        
+        <category name="org.mortbay" log-level="ERROR">
+          <log-target id-ref="logFile"/>
+        </category>
+        
+        <category name="jorphan" log-level="ERROR">
+          <log-target id-ref="logFile"/>
+        </category>
+        
+        <category name="org.apache.commons" log-level="WARN">
+          <log-target id-ref="logFile"/>
+        </category>
+        
+        <category name="com.sshtools.j2ssh" log-level="WARN">
+          <log-target id-ref="logFile"/>
+        </category>
+        
+        <category name="org.apache.fop" log-level="ERROR">
+         <log-target id-ref="logFile"/>
+        </category>
+        
+       <category name="neoload.plugins" log-level="ERROR">
+          <log-target id-ref="pluginsFile"/>
+        </category>
+        
+        <category name="org.lobobrowser" log-level="OFF">
+         <log-target id-ref="logFile"/>
+        </category>
+        
+        <category name="org.apache.cxf"  log-level="WARN">
+  	 		<log-target id-ref="logFile"/>
+  		</category>
+  
+  		<category name="com.neotys.cloud.ws"  log-level="WARN">
+  		 	<log-target id-ref="logFile"/>
+ 		</category>
+  
+  
+   <category name="org.springframework"  log-level="WARN">
+  	 <log-target id-ref="logFile"/>
+  </category>
+        
+      </categories>
+  </logkit>
