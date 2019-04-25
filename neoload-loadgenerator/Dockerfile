@@ -4,10 +4,11 @@ FROM anapsix/alpine-java as builder
 
 ENV NL_VERSION=6.9
 
-ADD https://www.neotys.com/redirect/redirect.php?product=neoload&target=direct-download&os=linux ./ADD response.varfile ./
+ADD https://www.neotys.com/redirect/redirect.php?product=neoload&target=direct-download&os=linux ./neoload_linux_x64.sh
+ADD response.varfile ./
 
 #The group has same right that the owner for openshift. This is by chmod because installer force the mod (umask is useless).
-RUN sh /neoload_${NL_VERSION}_linux_x64.sh -q -dir /neoload -varfile response.varfile && \
+RUN sh /neoload_linux_x64.sh -q -dir /neoload -varfile response.varfile && \
     rm -rf /neoload/jre/*src.zip \
            /neoload/jre/lib/missioncontrol \
            /neoload/jre/lib/visualvm \
