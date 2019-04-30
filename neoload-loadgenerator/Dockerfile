@@ -2,7 +2,7 @@
 
 FROM anapsix/alpine-java as builder
 
-ENV NL_VERSION=6.9.0
+ENV NL_VERSION=6.9
 
 ADD https://www.neotys.com/redirect/redirect.php?product=neoload&target=direct-download&os=linux ./neoload_linux_x64.sh
 ADD response.varfile ./
