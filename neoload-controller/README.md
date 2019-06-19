@@ -28,7 +28,7 @@ The NeoLoad Controller is connected to NeoLoad Web which initiates the test.
 | MODE | Use '**Managed**' to let NeoLoad Web manage this Controller.  | Managed |
 | NEOLOADWEB_TOKEN | The NeoLoad Web API token. | 9be32780c6ec86d92jk0d1d25c |
 | NEOLOADWEB_URL (Optional) |  The NeoLoad Web API URL. Optional, is only required for NeoLoad Web OnPremise deployment. If not present, the Controller will use NeoLoad Web SAAS. | https://neoload.mycompany.com:8080 |
-| NEOLOADWEB_PROXY | The proxy URL to access to NeoLoad Web | http://login:password@myproxy | 
+| NEOLOADWEB_PROXY (Since 6.10 / Optional) | The proxy URL to access to NeoLoad Web | http://login:password@myproxy | 
 | LEASE_SERVER (Optional) | Which server used to get licence. The default value is NTS | NTS or NLWEB |
 | NTS_URL (Not for NLWeb lease) | The NTS URL to lease the license. | http://nts.mycompany.com/nts |
 | NTS_LOGIN (Not for NLWeb lease) | Credential to access the NTS. | me:A5C4RjYqGTHq6Pk2uAJBwA== |
