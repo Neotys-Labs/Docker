@@ -2,13 +2,12 @@
 
 FROM anapsix/alpine-java as builder
 
-ENV NL_VERSION=6.9
 
-
+ENV NL_VERSION=7.0
 ADD https://www.neotys.com/redirect/redirect.php?product=neoload&target=direct-download&os=linux&version=${NL_VERSION} ./neoload_linux_x64.sh
 
 #The group has same right that the owner for openshift. This is by chmod because installer force the mod (umask is useless).
-RUN sh /neoload_linux_x64.sh -q -dir /neoload -Vsys.installationTypeId=Controller -Vsys.component.Common\$Boolean=true -Vsys.component.Controller\$Boolean=true &&\
+RUN sh /neoload_${BUILD_NL_VERSION}_linux_x64.sh -q -dir /neoload -Vsys.installationTypeId=Controller -Vsys.component.Common\$Boolean=true -Vsys.component.Controller\$Boolean=true &&\
     rm -rf /neoload/doc \
            /neoload/jre/*src.zip \
            /neoload/jre/lib/missioncontrol \
@@ -38,6 +37,12 @@ RUN sh /neoload_linux_x64.sh -q -dir /neoload -Vsys.installationTypeId=Controlle
     chmod -R g=u /neoload
 
 FROM alpine:3.7
+
+LABEL neoload.product.kind=Controller \
+      neoload.product.version=7.0.0 \
+      neoload.product.build=20190712-20 \
+      neoload.project.version=6.6
+
 
 ENV GLIBC_REPO=https://github.com/sgerrand/alpine-pkg-glibc \
     GLIBC_VERSION=2.27-r0 \

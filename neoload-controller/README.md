@@ -28,12 +28,13 @@ The NeoLoad Controller is connected to NeoLoad Web which initiates the test.
 | MODE | Use '**Managed**' to let NeoLoad Web manage this Controller.  | Managed |
 | NEOLOADWEB_TOKEN | The NeoLoad Web API token. | 9be32780c6ec86d92jk0d1d25c |
 | NEOLOADWEB_URL (Optional) |  The NeoLoad Web API URL. Optional, is only required for NeoLoad Web OnPremise deployment. If not present, the Controller will use NeoLoad Web SAAS. | https://neoload.mycompany.com:8080 |
-| NEOLOADWEB_PROXY (Since 6.10 / Optional) | The proxy URL to access to NeoLoad Web | http://login:password@myproxy | 
+| NEOLOADWEB_PROXY (Optional / Since 6.10) | The proxy URL to access NeoLoad Web | http://login:password@myproxy |
 | LEASE_SERVER (Optional) | Which server used to get licence. The default value is NTS | NTS or NLWEB |
 | NTS_URL (Not for NLWeb lease) | The NTS URL to lease the license. | http://nts.mycompany.com/nts |
 | NTS_LOGIN (Not for NLWeb lease) | Credential to access the NTS. | me:A5C4RjYqGTHq6Pk2uAJBwA== |
 | ZONE (Optional) | The Zone ID of the Controller, default value is the default Zone ID. | myZoneId |
-| CONTROLLER_XMX (Optional) | Max memory of the controller. | -Xmx1024m |
+| CONTROLLER_XMX (Optional) | Max memory of the Controller. | -Xmx1024m |
+| AGENT_XMX (Since 7.0 / Optional) | Max memory of the Controller agent. | -Xmx256m |
 
 > Note: The passwords of NTS_LOGIN must be encrypted with [our password scrambler](https://www.neotys.com/documents/doc/neoload/latest/#6418.htm).
 
@@ -73,8 +74,8 @@ Add the following option to the previous example before the *neotys/neoload-cont
 | ------------------------ | --------------------------------------------- | ---------------- |
 | PROJECT_NAME | The name of the project | myProject |
 | SCENARIO | The name of the scenario to run | myScenario |
-| COLLAB_URL | The URL of the CSV to get the project | http://nts.mycompany.com/nts/svnroot/repository |
-| COLLAB_LOGIN (Optional) | The credential to checkout the project from the CSV | me:A5C4Rj2uAJBwA== |
+| COLLAB_URL | The URL of the VCS to get the project | http://nts.mycompany.com/nts/svnroot/repository |
+| COLLAB_LOGIN (Optional) | The credential to checkout the project from the VCS | me:A5C4Rj2uAJBwA== |
 | RESULT_NAME (Optional) |  The name of the result | Simple test |
 | DESCRIPTION (Optional) | The description of the test result | My CI automated test |
 | NTS_URL | The NTS URL to lease the license | http://nts.mycompany.com/nts |
@@ -86,7 +87,7 @@ Add the following option to the previous example before the *neotys/neoload-cont
 | PUBLISH_RESULT | Where to publish result: NTS, WEB (for neoload web) or ALL  | ALL |
 | NEOLOADWEB_URL (Optional) |  The NeoLoad Web API URL | https://neoload.mycompany.com:8080 |
 | NEOLOADWEB_TOKEN (Optional) | The NeoLoad Web API token | 9be32780c6ec86d92jk0d1d25c | 
-| NEOLOADWEB_PROXY | The proxy URL to access to NeoLoad Web | http://login:password@myproxy | 
+| NEOLOADWEB_PROXY (Optional / Since 6.10) | The proxy URL to access NeoLoad Web | http://login:password@myproxy |
 | OTHER_ARGS (Optional) | Other arguments | -variables env=preprod |
 | CONTROLLER_XMX (Optional) | Max memory of the controller | -Xmx1024m |
 | LOADGENERATOR_XMX (Optional) | Max memory of the Load Generator | -Xmx2048m |
@@ -94,7 +95,7 @@ Add the following option to the previous example before the *neotys/neoload-cont
 These parameters refer to the command line argument of `NeoLoadCmd`. For more information, see [List of arguments](https://www.neotys.com/documents/doc/neoload/latest/#643.htm#o38549).
 If the max memory limit is not set, it will be automatically set at the recommended ratio.
 
-> Note: The passwords of NTS_LOGIN and COLLAB_LOGIN must be encrypted with [our password scrambler](https://www.neotys.com/documents/doc/neoload/latest/#6418.htm).
+> Note: The passwords of NTS_LOGIN and COLLAB_LOGIN must be encrypted with [our password scrambler](https://www.neotys.com/documents/doc/neoload/latest/#6418.htm). The proxy password can be encrypted too with the prefixed encryption.
 
 License
 ---------

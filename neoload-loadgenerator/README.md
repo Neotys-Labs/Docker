@@ -32,11 +32,12 @@ Start a NeoLoad Load Generator instance connecting to NeoLoad Web (since NeoLoad
 | ------------------------ |: ---------------------------------------------: | :----------------: |
 | NEOLOADWEB_URL (Optional) | The NeoLoad Web API URL | http://neoloadweb.mycompany.com:1081 |
 | NEOLOADWEB_TOKEN | The NeoLoad Web access token | myToken |
-| NEOLOADWEB_PROXY (Since 6.10 / Optional) | The proxy URL to access to NeoLoad Web | http://login:password@myproxy |
+| NEOLOADWEB_PROXY (Optional) | The proxy URL to access NeoLoad Web | http://login:password@myproxy |
 | ZONE (Optional) | The Zone ID of the Load Generator | myZoneId |
 | LG_HOST | The host where the Load Generator can be reached (IP of the machine where the container is deployed) | lg.mycompany |
 | LG_PORT | The port on the host where the LG can be reached | 7100 |
 | LOADGENERATOR_XMX (Since 6.6 / Optional) | Max memory of the Load Generator | -Xmx2048m |
+| AGENT_XMX (Since 7.0 / Optional) | Max memory of the Load Generator agent. | -Xmx256m |
 
 If no NeoLoad Web API URL is specified it will try to connect to NeoLoad Web SAAS.
 
@@ -45,6 +46,9 @@ Once the connection is established it will be available on NeoLoad Web.
 The Load Generator Agent will be available in the Zone associated with its Zone ID in NeoLoad Web.
 
 The NeoLoad Load Generator files are located in /home/neoload/neoload
+
+> Note: The password of proxy can be encrypted with [our password scrambler](https://www.neotys.com/documents/doc/neoload/latest/#6418.htm) with the prefixed encryption.
+
 
 License
 ---------

@@ -2,13 +2,14 @@
 
 FROM anapsix/alpine-java as builder
 
-ENV NL_VERSION=6.9
 
-ADD https://www.neotys.com/redirect/redirect.php?product=neoload&target=direct-download&os=linux ./neoload_linux_x64.sh
+ENV NL_VERSION=7.0
+ADD https://www.neotys.com/redirect/redirect.php?product=neoload&target=direct-download&os=linux&version=${NL_VERSION} ./neoload_linux_x64.sh
+
 ADD response.varfile ./
 
 #The group has same right that the owner for openshift. This is by chmod because installer force the mod (umask is useless).
-RUN sh /neoload_linux_x64.sh -q -dir /neoload -varfile response.varfile && \
+RUN sh /neoload_${BUILD_NL_VERSION}_linux_x64.sh -q -dir /neoload -varfile response.varfile && \
     rm -rf /neoload/jre/*src.zip \
            /neoload/jre/lib/missioncontrol \
            /neoload/jre/lib/visualvm \
@@ -49,6 +50,11 @@ RUN echo "-Dneotys.logs.noredirection=false" >> /neoload/bin/LoadGeneratorAgent.
     sed -i "s|collected.lg.logs.size.max=.*|collected.lg.logs.size.max=-1|g" /neoload/conf/agent.properties
 
 FROM alpine:3.7
+
+LABEL neoload.product.kind=LoadGenerator \
+      neoload.product.version=7.0.0 \
+      neoload.product.build=20190712-20 \
+      neoload.project.version=6.6
 
 ENV GLIBC_REPO=https://github.com/sgerrand/alpine-pkg-glibc \
     GLIBC_VERSION=2.27-r0 \

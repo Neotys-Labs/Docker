@@ -59,6 +59,10 @@ if [[ ! "${LOADGENERATOR_XMX}" ]]; then
     fi
 fi
 
+if [[ "${AGENT_XMX}" ]]; then
+    sed -i "s/-Xmx512m/${AGENT_XMX}/g" /home/neoload/neoload/bin/LoadGeneratorAgent.vmoptions
+fi
+
 if [ "${NEOLOADWEB_URL}" ]; then
     export NLWEB_API_URL=${NEOLOADWEB_URL}
 fi
