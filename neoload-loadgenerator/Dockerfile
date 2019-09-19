@@ -9,7 +9,7 @@ ADD https://www.neotys.com/redirect/redirect.php?product=neoload&target=direct-d
 ADD response.varfile ./
 
 #The group has same right that the owner for openshift. This is by chmod because installer force the mod (umask is useless).
-RUN sh /neoload_${BUILD_NL_VERSION}_linux_x64.sh -q -dir /neoload -varfile response.varfile && \
+RUN sh /neoload_linux_x64.sh -q -dir /neoload -varfile response.varfile && \
     rm -rf /neoload/jre/*src.zip \
            /neoload/jre/lib/missioncontrol \
            /neoload/jre/lib/visualvm \
