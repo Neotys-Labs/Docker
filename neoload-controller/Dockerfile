@@ -39,8 +39,8 @@ RUN sh /neoload_linux_x64.sh -q -dir /neoload -Vsys.installationTypeId=Controlle
 FROM alpine:3.7
 
 LABEL neoload.product.kind=Controller \
-      neoload.product.version=7.0.1 \
-      neoload.product.build=20190912-51 \
+      neoload.product.version=7.0.2 \
+      neoload.product.build=20190924-58 \
       neoload.project.version=6.6
 
 

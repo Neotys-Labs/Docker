@@ -52,8 +52,8 @@ RUN echo "-Dneotys.logs.noredirection=false" >> /neoload/bin/LoadGeneratorAgent.
 FROM alpine:3.7
 
 LABEL neoload.product.kind=LoadGenerator \
-      neoload.product.version=7.0.1 \
-      neoload.product.build=20190912-51 \
+      neoload.product.version=7.0.2 \
+      neoload.product.build=20190924-58 \
       neoload.project.version=6.6
 
 ENV GLIBC_REPO=https://github.com/sgerrand/alpine-pkg-glibc \
