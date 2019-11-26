@@ -1,13 +1,13 @@
 #Be carefull openshift change the ID of the user on the fly. But this user is always in root group.
 
-FROM anapsix/alpine-java as builder
+FROM neotys/alpine-glibc:3.10 as builder
 
 
-ENV NL_VERSION=7.0
+ENV NL_VERSION=7.1
 ADD https://www.neotys.com/redirect/redirect.php?product=neoload&target=direct-download&os=linux&version=${NL_VERSION} ./neoload_linux_x64.sh
 
 #The group has same right that the owner for openshift. This is by chmod because installer force the mod (umask is useless).
-RUN sh /neoload_linux_x64.sh -q -dir /neoload -Vsys.installationTypeId=Controller -Vsys.component.Common\$Boolean=true -Vsys.component.Controller\$Boolean=true &&\
+RUN sh /neoload_linux_x64.sh -q -c -dir /neoload -Vsys.installationTypeId=Controller -Vsys.component.Common\$Boolean=true -Vsys.component.Controller\$Boolean=true &&\
     rm -rf /neoload/doc \
            /neoload/jre/*src.zip \
            /neoload/jre/lib/missioncontrol \
@@ -36,29 +36,17 @@ RUN sh /neoload_linux_x64.sh -q -dir /neoload -Vsys.installationTypeId=Controlle
            /tmp/* /var/cache/apk/* && \
     chmod -R g=u /neoload
 
-FROM alpine:3.7
+FROM neotys/alpine-glibc:3.10
 
 LABEL neoload.product.kind=Controller \
-      neoload.product.version=7.0.2 \
-      neoload.product.build=20190924-58 \
-      neoload.project.version=6.6
+      neoload.product.version=7.1.0 \
+      neoload.product.build=20191120-35 \
+      neoload.project.version=7.0
 
 
-ENV GLIBC_REPO=https://github.com/sgerrand/alpine-pkg-glibc \
-    GLIBC_VERSION=2.27-r0 \
-    LANG=C.UTF-8 \
-    LOG_ALSO_TO_CONSOLE=true
+ENV LOG_ALSO_TO_CONSOLE=true
 
 RUN set -ex && \
-    apk -U upgrade && \
-    apk add libstdc++ curl ca-certificates bash && \
-    for pkg in glibc-${GLIBC_VERSION} glibc-bin-${GLIBC_VERSION} glibc-i18n-${GLIBC_VERSION}; do curl -sSL ${GLIBC_REPO}/releases/download/${GLIBC_VERSION}/${pkg}.apk -o /tmp/${pkg}.apk; done && \
-    apk add --allow-untrusted /tmp/*.apk && \
-    rm -v /tmp/*.apk && \
-    ( /usr/glibc-compat/bin/localedef --force --inputfile POSIX --charmap UTF-8 C.UTF-8 || true ) && \
-    echo "export LANG=C.UTF-8" > /etc/profile.d/locale.sh && \
-    /usr/glibc-compat/sbin/ldconfig /lib /usr/glibc-compat/lib && \
-    apk del curl glibc-i18n && \
     addgroup -S neoload && \
     adduser -S -G neoload neoload && \
     chmod g+w /etc/passwd && \
