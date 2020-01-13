@@ -73,7 +73,13 @@ if [ "${NEOLOADWEB_PROXY}" ]; then
     export NLWEB_PROXY=${NEOLOADWEB_PROXY}
 fi
 
-
 sed -i "s/lg.launcher.vm.parameters=-server/lg.launcher.vm.parameters=$LOADGENERATOR_XMX -server/g" /home/neoload/neoload/conf/agent.properties
+
+# once Java 8u191+ used, factor in container-specific memory optima: https://merikan.com/2019/04/jvm-in-a-container/
+
+if [ "${INTERNAL_PORT}" ]; then # useful for Kubernetes, multiple LGs in a pod, dynamic port allocation
+    export INTERNAL_PORT=${INTERNAL_PORT}
+    sed -i "s/agent.server.port=7100/agent.server.port=$INTERNAL_PORT/g" /home/neoload/neoload/conf/agent.properties
+fi
 
 exec /home/neoload/neoload/bin/LoadGeneratorAgent -d
