@@ -3,12 +3,13 @@
 FROM neotys/alpine-glibc:3.10 as builder
 
 
-ENV NL_VERSION=7.1
-ADD https://www.neotys.com/redirect/redirect.php?product=neoload&target=direct-download&os=linux&version=${NL_VERSION} ./neoload_linux_x64.sh
+ENV NL_VERSION=7.2
+ARG URL=https://www.neotys.com/redirect/redirect.php?product=neoload&target=direct-download&os=linux&version=${NL_VERSION}&format=tar.gz
 
 #The group has same right that the owner for openshift. This is by chmod because installer force the mod (umask is useless).
-RUN sh /neoload_linux_x64.sh -q -c -dir /neoload -Vsys.installationTypeId=Controller -Vsys.component.Common\$Boolean=true -Vsys.component.Controller\$Boolean=true &&\
-    rm -rf /neoload/doc \
+RUN mkdir /neoload/ \
+    && wget ${URL} -O - |  tar -xz --strip-components=1 -C /neoload/ \
+    && rm -rf /neoload/doc \
            /neoload/jre/*src.zip \
            /neoload/jre/lib/missioncontrol \
            /neoload/jre/lib/visualvm \
@@ -33,25 +34,27 @@ RUN sh /neoload_linux_x64.sh -q -c -dir /neoload -Vsys.installationTypeId=Contro
            /neoload/jre/lib/amd64/libgstreamer-lite.so \
            /neoload/jre/lib/oblique-fonts \
            /neoload/jre/lib/plugin.jar \
-           /tmp/* /var/cache/apk/* && \
-    chmod -R g=u /neoload
+           /tmp/* /var/cache/apk/* \
+    && sed -i 's/wan.emulation.plugin=ipfw/wan.emulation.plugin=none/g' /neoload/conf/agent.properties \
+    && chmod -R g=u /neoload
 
 FROM neotys/alpine-glibc:3.10
 
 LABEL neoload.product.kind=Controller \
-      neoload.product.version=7.1.0 \
-      neoload.product.build=20191120-35 \
+      neoload.product.version=7.2.0 \
+      neoload.product.build=20200124-33 \
       neoload.project.version=7.0
 
 
 ENV LOG_ALSO_TO_CONSOLE=true
 
-RUN set -ex && \
-    addgroup -S neoload && \
-    adduser -S -G neoload neoload && \
-    chmod g+w /etc/passwd && \
-    chgrp 0 /home/neoload && \
-    chmod g=rwx /home/neoload
+RUN set -ex \
+    && addgroup -S neoload \
+    && adduser -S -G neoload neoload \
+    && chmod g+w /etc/passwd \
+    && chgrp 0 /home/neoload \
+    && chmod g=rwx /home/neoload \
+    && apk --no-cache add ttf-dejavu
 
 
 #Alpine put suid bit on home directory. So the right inherit from parent directory. We prefer to use the GID of process for new files.

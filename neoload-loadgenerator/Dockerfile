@@ -3,14 +3,15 @@
 FROM neotys/alpine-glibc:3.10 as builder
 
 
-ENV NL_VERSION=7.1
-ADD https://www.neotys.com/redirect/redirect.php?product=neoload&target=direct-download&os=linux&version=${NL_VERSION} ./neoload_linux_x64.sh
+ENV NL_VERSION=7.2
+ARG URL=https://www.neotys.com/redirect/redirect.php?product=neoload_loadgenerator&target=direct-download&os=linux&version=${NL_VERSION}&format=tar.gz
 
-ADD response.varfile ./
+
 
 #The group has same right that the owner for openshift. This is by chmod because installer force the mod (umask is useless).
-RUN sh /neoload_linux_x64.sh -q -c -dir /neoload -varfile response.varfile && \
-    rm -rf /neoload/jre/*src.zip \
+RUN mkdir /neoload/ \
+    && wget ${URL} -O - |  tar -xz --strip-components=1 -C /neoload/ \
+    && rm -rf /neoload/jre/*src.zip \
            /neoload/jre/lib/missioncontrol \
            /neoload/jre/lib/visualvm \
            /neoload/jre/lib/*javafx* \
@@ -40,8 +41,9 @@ RUN sh /neoload_linux_x64.sh -q -c -dir /neoload -varfile response.varfile && \
            /neoload/jre/lib/ext/jfxrt.jar \
            /neoload/jre/lib/oblique-fonts \
            /neoload/jre/lib/plugin.jar \
-           /tmp/* /var/cache/apk/* && \
-    chmod -R g=u /neoload
+           /tmp/* /var/cache/apk/* \
+    && sed -i 's/wan.emulation.plugin=ipfw/wan.emulation.plugin=none/g' /neoload/conf/agent.properties \
+    && chmod -R g=u /neoload
 
 
 ADD ./lglogs.xconfig ./logs.xconfig /neoload/conf/
@@ -52,8 +54,8 @@ RUN echo "-Dneotys.logs.noredirection=false" >> /neoload/bin/LoadGeneratorAgent.
 FROM neotys/alpine-glibc:3.10
 
 LABEL neoload.product.kind=LoadGenerator \
-      neoload.product.version=7.1.0 \
-      neoload.product.build=20191120-35 \
+      neoload.product.version=7.2.0 \
+      neoload.product.build=20200124-33 \
       neoload.project.version=7.0
 
 ENV LOG_ALSO_TO_CONSOLE=true
