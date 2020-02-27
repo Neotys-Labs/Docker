@@ -54,8 +54,8 @@ RUN echo "-Dneotys.logs.noredirection=false" >> /neoload/bin/LoadGeneratorAgent.
 FROM neotys/alpine-glibc:3.10
 
 LABEL neoload.product.kind=LoadGenerator \
-      neoload.product.version=7.2.0 \
-      neoload.product.build=20200124-33 \
+      neoload.product.version=7.2.1 \
+      neoload.product.build=20200225-49 \
       neoload.project.version=7.0
 
 ENV LOG_ALSO_TO_CONSOLE=true
