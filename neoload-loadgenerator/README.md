@@ -1,6 +1,6 @@
 What is NeoLoad Load Generator?
 --------------------------
-[NeoLoad](http://www.neotys.com/neoload/overview) is a load testing solution developed by [Neotys](http://www.neotys.com). NeoLoad realistically simulates user activity and monitors infrastructure behavior so you can eliminate bottlenecks in all your web and mobile applications.
+[NeoLoad](https://www.neotys.com/neoload/overview) is a load testing solution developed by [Neotys](https://www.neotys.com). NeoLoad realistically simulates user activity and monitors infrastructure behavior so you can eliminate bottlenecks in all your web and mobile applications.
 
 NeoLoad Controller uses one or many Load Generators to generate the load against the server under test.
 
@@ -52,7 +52,7 @@ The NeoLoad Load Generator files are located in /home/neoload/neoload
 
 License
 ---------
-NeoLoad is licensed under the following [License Agreement](http://www.neotys.com/documents/legal/eula/neoload/eula_en.html). You must agree to this license agreement to download and use the image.
+NeoLoad is licensed under the following [License Agreement](https://www.neotys.com/documents/legal/eula/neoload/eula_en.html). You must agree to this license agreement to download and use the image.
 
 Note: This license does not permit further distribution.
 

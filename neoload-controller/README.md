@@ -1,6 +1,6 @@
 # What is NeoLoad Controller?
 -----------------------------
-[NeoLoad](http://www.neotys.com/neoload/overview) is a load testing solution developed by [Neotys](http://www.neotys.com). NeoLoad realistically simulates user activity and monitors infrastructure behavior so you can eliminate bottlenecks in all your web and mobile applications.
+[NeoLoad](https://www.neotys.com/neoload/overview) is a load testing solution developed by [Neotys](https://www.neotys.com). NeoLoad realistically simulates user activity and monitors infrastructure behavior so you can eliminate bottlenecks in all your web and mobile applications.
 NeoLoad controller uses one or many Load Generators to generate the load against the server under test.
 
 This image allows you to run NeoLoad tests within two different scopes:
@@ -99,7 +99,7 @@ If the max memory limit is not set, it will be automatically set at the recommen
 
 License
 ---------
-NeoLoad is licensed under the following [License Agreement](http://www.neotys.com/documents/legal/eula/neoload/eula_en.html). You must agree to this license agreement to download and use the image.
+NeoLoad is licensed under the following [License Agreement](https://www.neotys.com/documents/legal/eula/neoload/eula_en.html). You must agree to this license agreement to download and use the image.
 
 Note: This license does not permit further distribution.
 
