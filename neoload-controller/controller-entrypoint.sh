@@ -49,6 +49,9 @@ runController() {
     if [ "${NEOLOADWEB_PROXY}" ]; then
         PARAMS="$PARAMS -nlwebProxy ${NEOLOADWEB_PROXY}"
     fi
+    if [ "${NEOLOADWEB_WORKSPACE}" ]; then
+        PARAMS="$PARAMS -nlwebWorkspace ${NEOLOADWEB_WORKSPACE}"
+    fi
     if [ "${OTHER_ARGS}" ]; then
         PARAMS="$PARAMS ${OTHER_ARGS}"
     fi
