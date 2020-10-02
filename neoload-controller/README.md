@@ -89,6 +89,7 @@ Add the following option to the previous example before the *neotys/neoload-cont
 | NEOLOADWEB_URL (Optional) |  The NeoLoad Web API URL | https://neoload.mycompany.com:8080 |
 | NEOLOADWEB_TOKEN (Optional) | The NeoLoad Web API token | 9be32780c6ec86d92jk0d1d25c | 
 | NEOLOADWEB_PROXY (Optional / Since 6.10) | The proxy URL to access NeoLoad Web | http://login:password@myproxy |
+| NEOLOADWEB_WORKSPACE (Optional / Since 7.4) | The NeoLoad Web Workspace (name or ID) | myWorkspace 
 | OTHER_ARGS (Optional) | Other arguments | -variables env=preprod |
 | CONTROLLER_XMX (Optional) | Max memory of the controller | -Xmx1024m |
 | LOADGENERATOR_XMX (Optional) | Max memory of the Load Generator | -Xmx2048m |

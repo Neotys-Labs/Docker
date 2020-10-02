@@ -3,7 +3,7 @@
 FROM neotys/alpine-glibc:3.10 as builder
 
 
-ENV NL_VERSION=7.5
+ENV NL_VERSION=7.6
 ARG URL=https://www.neotys.com/redirect/redirect.php?product=neoload&target=direct-download&os=linux&version=${NL_VERSION}&format=tar.gz
 
 #The group has same right that the owner for openshift. This is by chmod because installer force the mod (umask is useless).
@@ -41,8 +41,8 @@ RUN mkdir /neoload/ \
 FROM neotys/alpine-glibc:3.10
 
 LABEL neoload.product.kind=Controller \
-      neoload.product.version=7.5.1 \
-      neoload.product.build=20200909-44 \
+      neoload.product.version=7.6.0 \
+      neoload.product.build=20200928-41 \
       neoload.project.version=8.1
 
 
