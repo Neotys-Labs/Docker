@@ -3,7 +3,7 @@
 FROM neotys/alpine-glibc:3.10 as builder
 
 
-ENV NL_VERSION=7.6
+ENV NL_VERSION=7.7
 ARG URL=https://www.neotys.com/redirect/redirect.php?product=neoload_loadgenerator&target=direct-download&os=linux&version=${NL_VERSION}&format=tar.gz
 
 
@@ -54,9 +54,9 @@ RUN echo "-Dneotys.logs.noredirection=false" >> /neoload/bin/LoadGeneratorAgent.
 FROM neotys/alpine-glibc:3.10
 
 LABEL neoload.product.kind=LoadGenerator \
-      neoload.product.version=7.6.0 \
-      neoload.product.build=20200928-41 \
-      neoload.project.version=8.1
+      neoload.product.version=7.7.0 \
+      neoload.product.build=20201130-37 \
+      neoload.project.version=8.2
 
 ENV LOG_ALSO_TO_CONSOLE=true
 
