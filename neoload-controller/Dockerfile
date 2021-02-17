@@ -41,8 +41,8 @@ RUN mkdir /neoload/ \
 FROM neotys/alpine-glibc:3.10
 
 LABEL neoload.product.kind=Controller \
-      neoload.product.version=7.8.0 \
-      neoload.product.build=20210202-62 \
+      neoload.product.version=7.8.1 \
+      neoload.product.build=20210212-76 \
       neoload.project.version=8.2
 
 
