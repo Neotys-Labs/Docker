@@ -64,4 +64,4 @@ Please see [the Docker installation documentation](https://docs.docker.com/insta
 
 User Feedback
 ------------------
-For general issues relating to NeoLoad you can get help from [Neotys Support](https://www.neotys.com/community/?from=%2Faccountarea%2Fcasecreate.php) or [Neotys Community](http://answers.neotys.com/).
+For general issues relating to NeoLoad you can get help from [NeoLoad Support](https://www.neotys.com/community/?from=%2Faccountarea%2Fcasecreate.php) or [NeoLoad Community](http://answers.neotys.com/).
