@@ -63,8 +63,8 @@ RUN echo "-Dneotys.logs.noredirection=false" >> /neoload/bin/LoadGeneratorAgent.
 FROM alpine:3.13.5
 
 LABEL neoload.product.kind=LoadGenerator \
-      neoload.product.version=7.11.0 \
-      neoload.product.build=20210903-38 \
+      neoload.product.version=7.11.1 \
+      neoload.product.build=20211001-52 \
       neoload.project.version=8.3
 
 ENV LOG_ALSO_TO_CONSOLE=true

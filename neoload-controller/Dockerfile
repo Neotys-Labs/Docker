@@ -49,8 +49,8 @@ RUN chmod -R g=u /neoload
 
 FROM alpine:3.13.5
 LABEL neoload.product.kind=Controller \
-      neoload.product.version=7.11.0 \
-      neoload.product.build=20210903-38 \
+      neoload.product.version=7.11.1 \
+      neoload.product.build=20211001-52 \
       neoload.project.version=8.3
 
 
