@@ -1,5 +1,6 @@
 #Be carefull openshift change the ID of the user on the fly. But this user is always in root group.
 
+
 FROM alpine:3.13.5 as builder
 
 ARG LIBERICA_URL=https://download.bell-sw.com/java/11.0.8+10/bellsoft-jre11.0.8+10-linux-x64-musl.tar.gz
