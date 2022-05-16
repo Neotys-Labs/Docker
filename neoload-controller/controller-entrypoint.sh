@@ -52,6 +52,9 @@ runController() {
     if [ "${NEOLOADWEB_WORKSPACE}" ]; then
         PARAMS="$PARAMS -nlwebWorkspace ${NEOLOADWEB_WORKSPACE}"
     fi
+    if [ "${NEOLOADWEB_TEST}" ]; then
+        PARAMS="$PARAMS -nlwebTest ${NEOLOADWEB_TEST}"
+    fi
     if [ "${OTHER_ARGS}" ]; then
         PARAMS="$PARAMS ${OTHER_ARGS}"
     fi

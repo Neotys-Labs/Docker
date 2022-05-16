@@ -1,12 +1,12 @@
 #Be carefull openshift change the ID of the user on the fly. But this user is always in root group.
 
-FROM alpine:3.13.7 as builder
+FROM alpine:3.15.4 as builder
 
-ARG LIBERICA_URL=https://download.bell-sw.com/java/11.0.12+7/bellsoft-jre11.0.12+7-linux-x64-musl.tar.gz
-ARG LIBERICA_PATCH=https://github.com/Neotys-Labs/jre-patch-neoload/archive/refs/tags/jre-patch-11.0.12+7.tar.gz
+ARG LIBERICA_URL=https://download.bell-sw.com/java/11.0.15+10/bellsoft-jre11.0.15+10-linux-x64-musl.tar.gz
+ARG LIBERICA_PATCH=https://github.com/Neotys-Labs/jre-patch-neoload/archive/refs/tags/jre-patch-11.0.15+10.tar.gz
 
 
-ENV NL_VERSION=8.1.1
+ENV NL_VERSION=8.2.0
 ARG URL=https://www.neotys.com/redirect/redirect.php?product=neoload_loadgenerator&target=direct-download&os=linux&version=${NL_VERSION}&format=tar.gz
 
 WORKDIR /tmp/
@@ -60,11 +60,11 @@ ADD ./lglogs.xconfig ./logs.xconfig /neoload/conf/
 RUN echo "-Dneotys.logs.noredirection=false" >> /neoload/bin/LoadGeneratorAgent.vmoptions && \
     sed -i "s|collected.lg.logs.size.max=.*|collected.lg.logs.size.max=-1|g" /neoload/conf/agent.properties
 
-FROM alpine:3.13.7
+FROM alpine:3.15.4
 
 LABEL neoload.product.kind=LoadGenerator \
-      neoload.product.version=8.1.1 \
-      neoload.product.build=20220225-27 \
+      neoload.product.version=8.2.0 \
+      neoload.product.build=20220506-29 \
       neoload.project.version=8.4
 
 ENV LOG_ALSO_TO_CONSOLE=true

@@ -1,6 +1,6 @@
 What is NeoLoad Load Generator?
 --------------------------
-[NeoLoad](https://www.neotys.com/neoload/overview) is a load testing solution developed by [Neotys](https://www.neotys.com). NeoLoad realistically simulates user activity and monitors infrastructure behavior so you can eliminate bottlenecks in all your web and mobile applications.
+[NeoLoad](https://www.neotys.com/redirect/redirect.php?target=overview) is a load testing solution developed by [Neotys](https://www.neotys.com). NeoLoad realistically simulates user activity and monitors infrastructure behavior so you can eliminate bottlenecks in all your web and mobile applications.
 
 NeoLoad Controller uses one or many Load Generators to generate the load against the server under test.
 
@@ -47,12 +47,12 @@ The Load Generator Agent will be available in the Zone associated with its Zone 
 
 The NeoLoad Load Generator files are located in /home/neoload/neoload
 
-> Note: The password of proxy can be encrypted with [our password scrambler](https://www.neotys.com/documents/doc/neoload/latest/#6418.htm) with the prefixed encryption.
+> Note: The password of proxy can be encrypted with [our password scrambler](https://www.neotys.com/redirect/redirect.php?target=docpage&reference=passwordscrambler) with the prefixed encryption.
 
 
 License
 ---------
-NeoLoad is licensed under the following [License Agreement](https://www.neotys.com/documents/legal/eula/neoload/eula_en.html). You must agree to this license agreement to download and use the image.
+NeoLoad is licensed under the following [License Agreement](https://www.neotys.com/redirect/redirect.php?target=eula). You must agree to this license agreement to download and use the image.
 
 Note: This license does not permit further distribution.
 
@@ -64,4 +64,4 @@ Please see [the Docker installation documentation](https://docs.docker.com/insta
 
 User Feedback
 ------------------
-For general issues relating to NeoLoad you can get help from [NeoLoad Support](https://www.neotys.com/community/?from=%2Faccountarea%2Fcasecreate.php) or [NeoLoad Community](http://answers.neotys.com/).
+For general issues relating to NeoLoad you can get help from [NeoLoad Support](https://www.neotys.com/redirect/redirect.php?target=support.global) or [NeoLoad Community](https://www.neotys.com/redirect/redirect.php?target=answers).
