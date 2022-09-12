@@ -1,0 +1,54 @@
+<logkit logger="system.logkit" log-level="ERROR" manager-class="org.apache.avalon.excalibur.logger.LogKitLoggerManager">
+
+    <factories>
+        <factory type="file" class="com.neotys.nl.common.logging.docker.DockerTargetFactory"/>
+    </factories>
+
+    <targets>
+        <file id="logFile">
+            <append>false</append>
+            <filename>${logfile}</filename>
+            <format type="pattern">%{time:yyyy/MM/dd HH:mm:ss} %5.5{priority} - %{category}: %{message} %{throwable}\n</format>
+        </file>
+    </targets>
+
+    <categories>
+
+        <category name="" log-level="ERROR">
+            <log-target id-ref="logFile"/>
+        </category>
+
+        <category name="neoload" log-level="ERROR">
+            <log-target id-ref="logFile"/>
+        </category>
+
+        <category name="neoload.IPFW" log-level="WARN">
+            <log-target id-ref="logFile"/>
+        </category>
+
+        <category name="neoload.LG_INFO" log-level="INFO">
+            <log-target id-ref="logFile"/>
+        </category>
+
+        <category name="neoload.LG" log-level="INFO">
+            <log-target id-ref="logFile"/>
+        </category>
+
+        <category name="org.apache" log-level="ERROR">
+            <log-target id-ref="logFile"/>
+        </category>
+
+        <category name="neoload.JavaScript" log-level="DEBUG">
+            <log-target id-ref="logFile"/>
+        </category>
+
+        <category name="neoload.CustomAction" log-level="DEBUG">
+            <log-target id-ref="logFile"/>
+        </category>
+
+        <category name="neoload.plugins" log-level="ERROR">
+            <log-target id-ref="logFile"/>
+        </category>
+
+    </categories>
+</logkit>
