@@ -50,6 +50,7 @@ RUN rm -rf /neoload/jre/*src.zip \
            /neoload/jre/lib/ext/jfxrt.jar \
            /neoload/jre/lib/oblique-fonts \
            /neoload/jre/lib/plugin.jar \
+           /neoload/browsers \
            /tmp/* /var/cache/apk/*
 
 RUN sed -i 's/wan.emulation.plugin=ipfw/wan.emulation.plugin=none/g' /neoload/conf/agent.properties
