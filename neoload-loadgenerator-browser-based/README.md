@@ -29,7 +29,7 @@ Start a NeoLoad Load Generator instance connecting to NeoLoad Web (since NeoLoad
 
 
 | Env | Comment | Example |
-| ------------------------ |: ---------------------------------------------: | :----------------: |
+| ------------------------ | :---------------------------------------------: | :----------------: |
 | NEOLOADWEB_URL (Optional) | The NeoLoad Web API URL | http://neoloadweb.mycompany.com:1081 |
 | NEOLOADWEB_TOKEN | The NeoLoad Web access token | myToken |
 | NEOLOADWEB_PROXY (Optional) | The proxy URL to access NeoLoad Web | http://login:password@myproxy |
