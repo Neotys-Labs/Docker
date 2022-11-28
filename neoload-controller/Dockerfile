@@ -6,7 +6,7 @@ ARG LIBERICA_URL=https://download.bell-sw.com/java/11.0.15+10/bellsoft-jre11.0.1
 ARG LIBERICA_PATCH=https://github.com/Neotys-Labs/jre-patch-neoload/archive/refs/tags/jre-patch-11.0.15+10.tar.gz
 
 
-ENV NL_VERSION=8.2.2
+ENV NL_VERSION=9.1.1
 ARG URL=https://www.neotys.com/redirect/redirect.php?product=neoload&target=direct-download&os=linux&version=${NL_VERSION}&format=tar.gz
 
 WORKDIR /tmp/
@@ -43,21 +43,21 @@ RUN rm -rf /neoload/jre/*src.zip \
            /neoload/jre/lib/amd64/libgstreamer-lite.so \
            /neoload/jre/lib/oblique-fonts \
            /neoload/jre/lib/plugin.jar \
+           /neoload/browsers \
            /tmp/* /var/cache/apk/*
 RUN sed -i 's/wan.emulation.plugin=ipfw/wan.emulation.plugin=none/g' /neoload/conf/agent.properties
 RUN chmod -R g=u /neoload
 
 FROM alpine:3.15.6
 LABEL neoload.product.kind=Controller \
-      neoload.product.version=8.2.2 \
-      neoload.product.build=20221121-72 \
-      neoload.project.version=8.4
+      neoload.product.version=9.1.1 \
+      neoload.product.build=20221123-83 \
+      neoload.project.version=8.7
 
 
 
 RUN set -ex \
-    && addgroup -S neoload \
-    && adduser -S -G neoload neoload \
+    && adduser -S -G root neoload -u 10000 \
     && chmod g+w /etc/passwd \
     && chgrp 0 /home/neoload \
     && chmod g=rwx /home/neoload \
@@ -72,7 +72,7 @@ COPY --chown=neoload:0 --from=builder /neoload /home/neoload/neoload
 
 ADD ./entrypoint.sh ./controller-entrypoint.sh ./controller-agent-entrypoint.sh /home/neoload/
 
-USER neoload
+USER 10000
 WORKDIR /home/neoload/
 
 ENV LOG_ALSO_TO_CONSOLE=true
