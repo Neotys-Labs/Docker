@@ -6,7 +6,7 @@ ARG LIBERICA_URL=https://download.bell-sw.com/java/11.0.15+10/bellsoft-jre11.0.1
 ARG LIBERICA_PATCH=https://github.com/Neotys-Labs/jre-patch-neoload/archive/refs/tags/jre-patch-11.0.15+10.tar.gz
 
 
-ENV NL_VERSION=9.1.1
+ENV NL_VERSION=9.0.2
 ARG URL=https://www.neotys.com/redirect/redirect.php?product=neoload_loadgenerator&target=direct-download&os=linux&version=${NL_VERSION}&format=tar.gz
 
 WORKDIR /tmp/
@@ -64,14 +64,15 @@ RUN echo "-Dneotys.logs.noredirection=false" >> /neoload/bin/LoadGeneratorAgent.
 FROM alpine:3.15.6
 
 LABEL neoload.product.kind=LoadGenerator \
-      neoload.product.version=9.1.1 \
-      neoload.product.build=20221123-83 \
-      neoload.project.version=8.7
+      neoload.product.version=9.0.2 \
+      neoload.product.build=20221201-96 \
+      neoload.project.version=8.6
 
 ENV LOG_ALSO_TO_CONSOLE=true
 
 RUN set -ex && \
-    adduser -S -G root neoload -u 10000 &&\
+    addgroup -S neoload &&\
+    adduser -S -G neoload neoload &&\
     chmod g+w /etc/passwd && \
     chgrp 0 /home/neoload && \
     chmod g=rwx /home/neoload
@@ -86,7 +87,7 @@ COPY --chown=neoload:0 --from=builder /neoload /home/neoload/neoload
 
 ADD ./entrypoint.sh /home/neoload/
 
-USER 10000
+USER neoload
 WORKDIR /home/neoload/
 
 ENTRYPOINT ["/bin/sh", "/home/neoload/entrypoint.sh"]
