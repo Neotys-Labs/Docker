@@ -33,7 +33,7 @@ Start a NeoLoad Load Generator instance connecting to NeoLoad Web (since NeoLoad
 | NEOLOADWEB_URL (Optional) | The NeoLoad Web API URL | http://neoloadweb.mycompany.com:1081 |
 | NEOLOADWEB_TOKEN | The NeoLoad Web access token | myToken |
 | NEOLOADWEB_PROXY (Optional) | The proxy URL to access NeoLoad Web | http://login:password@myproxy |
-| ACCEPT_ONLY (Since 9.2 / Optional) | Secures the Load Generator by only accepting Tests started from NeoLoad Web when NEOLOADWEB_TOKEN is provided. Allowed values: ALL TRUSTED | TRUSTED |
+| AGENT_ACCEPT_ONLY (Since 9.2 / Optional) | Secures the Load Generator by only accepting Tests started from NeoLoad Web when NEOLOADWEB_TOKEN is provided. Allowed values: ALL TRUSTED | TRUSTED |
 | ZONE (Optional) | The Zone ID of the Load Generator | myZoneId |
 | LG_HOST | The host where the Load Generator can be reached (IP of the machine where the container is deployed) | lg.mycompany |
 | LG_PORT | The port on the host where the LG can be reached | 7100 |
