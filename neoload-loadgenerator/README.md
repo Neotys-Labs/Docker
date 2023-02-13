@@ -1,6 +1,6 @@
 What is NeoLoad Load Generator?
 --------------------------
-[NeoLoad](https://www.neotys.com/redirect/redirect.php?target=overview) is a load testing solution developed by [Neotys](https://www.neotys.com). NeoLoad realistically simulates user activity and monitors infrastructure behavior so you can eliminate bottlenecks in all your web and mobile applications.
+[NeoLoad](https://www.neotys.com/neoload/overview) is a load testing solution developed by [Neotys](https://www.neotys.com). NeoLoad realistically simulates user activity and monitors infrastructure behavior so you can eliminate bottlenecks in all your web and mobile applications.
 
 NeoLoad Controller uses one or many Load Generators to generate the load against the server under test.
 
@@ -29,11 +29,10 @@ Start a NeoLoad Load Generator instance connecting to NeoLoad Web (since NeoLoad
 
 
 | Env | Comment | Example |
-| ------------------------ | :---------------------------------------------: | :----------------: |
+| ------------------------ |: ---------------------------------------------: | :----------------: |
 | NEOLOADWEB_URL (Optional) | The NeoLoad Web API URL | http://neoloadweb.mycompany.com:1081 |
 | NEOLOADWEB_TOKEN | The NeoLoad Web access token | myToken |
 | NEOLOADWEB_PROXY (Optional) | The proxy URL to access NeoLoad Web | http://login:password@myproxy |
-| AGENT_ACCEPT_ONLY (Since 9.2 / Optional) | Secures the Load Generator by only accepting Tests started from NeoLoad Web when NEOLOADWEB_TOKEN is provided. Allowed values: ALL TRUSTED | TRUSTED |
 | ZONE (Optional) | The Zone ID of the Load Generator | myZoneId |
 | LG_HOST | The host where the Load Generator can be reached (IP of the machine where the container is deployed) | lg.mycompany |
 | LG_PORT | The port on the host where the LG can be reached | 7100 |
@@ -48,12 +47,12 @@ The Load Generator Agent will be available in the Zone associated with its Zone 
 
 The NeoLoad Load Generator files are located in /home/neoload/neoload
 
-> Note: The password of proxy can be encrypted with [our password scrambler](https://www.neotys.com/redirect/redirect.php?target=docpage&reference=passwordscrambler) with the prefixed encryption.
+> Note: The password of proxy can be encrypted with [our password scrambler](https://www.neotys.com/documents/doc/neoload/latest/#6418.htm) with the prefixed encryption.
 
 
 License
 ---------
-NeoLoad is licensed under the following [License Agreement](https://www.neotys.com/redirect/redirect.php?target=eula). You must agree to this license agreement to download and use the image.
+NeoLoad is licensed under the following [License Agreement](https://www.neotys.com/documents/legal/eula/neoload/eula_en.html). You must agree to this license agreement to download and use the image.
 
 Note: This license does not permit further distribution.
 
@@ -65,4 +64,4 @@ Please see [the Docker installation documentation](https://docs.docker.com/insta
 
 User Feedback
 ------------------
-For general issues relating to NeoLoad you can get help from [NeoLoad Support](https://www.neotys.com/redirect/redirect.php?target=support.global) or [NeoLoad Community](https://www.neotys.com/redirect/redirect.php?target=answers).
+For general issues relating to NeoLoad you can get help from [NeoLoad Support](https://www.neotys.com/community/?from=%2Faccountarea%2Fcasecreate.php) or [NeoLoad Community](http://answers.neotys.com/).
