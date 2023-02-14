@@ -3,7 +3,7 @@
 FROM alpine:3.15.4 as builder
 
 
-ENV NL_VERSION=9.2.0
+ENV NL_VERSION=9.0.3
 ARG URL=https://www.neotys.com/redirect/redirect.php?product=neoload_loadgenerator&target=direct-download&os=linux&version=${NL_VERSION}&format=tar.gz
 
 WORKDIR /tmp/
@@ -60,12 +60,12 @@ RUN echo "-Dneotys.logs.noredirection=false" >> /neoload/bin/LoadGeneratorAgent.
 
 FROM ubuntu:22.04
 
-ARG PLAYWRIGHT_CLASSPATH=/home/neoload/neoload/lib/playwright-1.28.1.jar:/home/neoload/neoload/lib/driver-bundle-1.28.1.jar:/home/neoload/neoload/lib/driver-1.28.1.jar
+ARG PLAYWRIGHT_CLASSPATH=/home/neoload/neoload/lib/playwright-1.23.0.jar:/home/neoload/neoload/lib/driver-bundle-1.23.0.jar:/home/neoload/neoload/lib/driver-1.23.0.jar
 
 LABEL neoload.product.kind=LoadGenerator \
-      neoload.product.version=9.2.0 \
-      neoload.product.build=20230113-24 \
-      neoload.project.version=8.7
+      neoload.product.version=9.0.3 \
+      neoload.product.build=20230130-107 \
+      neoload.project.version=8.6
 
 ENV LOG_ALSO_TO_CONSOLE=true
 ENV PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD 1
@@ -75,7 +75,7 @@ RUN apt update && \
     apt autoremove -y && \
     apt clean && \
     set -ex && \
-    useradd -ms /bin/bash -g root neoload -u 10000 &&\
+    useradd -ms /bin/bash neoload &&\
     chmod g+w /etc/passwd && \
     chgrp 0 /home/neoload && \
     chmod g=rwx /home/neoload
@@ -92,7 +92,7 @@ RUN /home/neoload/neoload/jre/bin/java -cp ${PLAYWRIGHT_CLASSPATH} com.microsoft
 
 ADD ./entrypoint.sh /home/neoload/
 
-USER 10000
+USER neoload
 WORKDIR /home/neoload/
 
 ENTRYPOINT ["/bin/bash", "/home/neoload/entrypoint.sh"]
