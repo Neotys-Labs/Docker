@@ -72,9 +72,6 @@ fi
 if [ "${NEOLOADWEB_PROXY}" ]; then
     export NLWEB_PROXY=${NEOLOADWEB_PROXY}
 fi
-if [ "${ACCEPT_ONLY}" ]; then
-    export ACCEPT_ONLY=${ACCEPT_ONLY}
-fi
 
 
 sed -i "s/lg.launcher.vm.parameters=-server/lg.launcher.vm.parameters=$LOADGENERATOR_XMX -server/g" /home/neoload/neoload/conf/agent.properties
