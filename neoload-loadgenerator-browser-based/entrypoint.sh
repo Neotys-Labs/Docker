@@ -72,11 +72,16 @@ fi
 if [ "${NEOLOADWEB_PROXY}" ]; then
     export NLWEB_PROXY=${NEOLOADWEB_PROXY}
 fi
-if [ "${ACCEPT_ONLY}" ]; then
-    export ACCEPT_ONLY=${ACCEPT_ONLY}
+
+set --
+if [ "${AGENT_ACCEPT_ONLY}" ]; then
+    set -- -a "${AGENT_ACCEPT_ONLY}"
+fi
+if [ "${ACCEPT_FINGERPRINTS}" ]; then
+    set -- "$@" -f "${ACCEPT_FINGERPRINTS}"
 fi
 
 
 sed -i "s/lg.launcher.vm.parameters=-server/lg.launcher.vm.parameters=$LOADGENERATOR_XMX -server/g" /home/neoload/neoload/conf/agent.properties
 
-exec /home/neoload/neoload/bin/LoadGeneratorAgent -d
+exec /home/neoload/neoload/bin/LoadGeneratorAgent -d --checkAccessibility "$@"

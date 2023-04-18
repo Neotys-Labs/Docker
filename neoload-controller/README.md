@@ -66,32 +66,41 @@ The new line must be added before the *neotys/neoload-controller* line.
 Then you must add the --override-lg parameter using the OTHER_ARGS environment variable like this:
 Add the following option to the previous example before the *neotys/neoload-controller* line.
 
-        -e OTHER_ARGS=--override-lg /tmp/lg.txt
+        -e OTHER_ARGS=--override-lg /tmp/lg.txt \
+
+### With Load Generators that accept only TRUSTED controllers
+Add the following options to the previous example before the *neotys/neoload-controller* line.
+
+        -e CERTIFICATE_PASSWORD=your_password \
+        -e CERTIFICATE_PATH=/tmp/cert.pkcs12 \
+        -v /path/to/your/local/NeoLoad_Controller_Certificate.pkcs12:/tmp/cert.pkcs12 \
 
 ### Parameters
-| Env                                             | Comment                                                   | Example |
-|-------------------------------------------------|-----------------------------------------------------------| ---------------- |
-| PROJECT_NAME                                    | The name of the project                                   | myProject |
-| SCENARIO                                        | The name of the scenario to run                           | myScenario |
-| COLLAB_URL                                      | The URL of the VCS to get the project                     | http://nts.mycompany.com/nts/svnroot/repository |
-| COLLAB_LOGIN (Optional)                         | The credential to checkout the project from the VCS       | me:A5C4Rj2uAJBwA== |
-| RESULT_NAME (Optional)                          | The name of the result                                    | Simple test |
-| DESCRIPTION (Optional)                          | The description of the test result                        | My CI automated test |
-| NTS_URL                                         | The NTS URL to lease the license                          | http://nts.mycompany.com/nts |
-| NTS_LOGIN                                       | Credential to access the NTS                              | me:A5C4RjYqGTHq6Pk2uAJBwA== |
-| LEASE_SERVER (Optional)                         | Which server used to get licence. The default value is NTS | NTS or NLWEB |
-| LICENSE_ID (Optional for NLWeb lease)           | The license ID to lease                                   | MCwCFQEsC7JH7fJM8Lk0FP3gkQ== |
-| VU_MAX                                          | Number of VU to lease                                     | 250 |
-| DURATION_MAX                                    | License lease duration in hours                           | 2 |
-| PUBLISH_RESULT                                  | Where to publish result: NTS, WEB (for neoload web) or ALL | ALL |
-| NEOLOADWEB_URL (Optional)                       | The NeoLoad Web API URL                                   | https://neoload.mycompany.com:8080 |
-| NEOLOADWEB_TOKEN (Optional)                     | The NeoLoad Web API token                                 | 9be32780c6ec86d92jk0d1d25c | 
-| NEOLOADWEB_PROXY (Optional / Since 6.10)        | The proxy URL to access NeoLoad Web                       | http://login:password@myproxy |
-| NEOLOADWEB_WORKSPACE (Optional / Since 7.4)     | The NeoLoad Web Workspace (name or ID)                    | myWorkspace
-| NEOLOADWEB_TEST (Optional / Since 8.2)          | The NeoLoad Web Test (name or ID)                         | myTest
-| OTHER_ARGS (Optional)                           | Other arguments                                           | -variables env=preprod |
-| CONTROLLER_XMX (Optional)                       | Max memory of the controller                              | -Xmx1024m |
-| LOADGENERATOR_XMX (Optional)                    | Max memory of the Load Generator                          | -Xmx2048m |
+| Env                                            | Comment                                                                                            | Example                                         |
+|------------------------------------------------|----------------------------------------------------------------------------------------------------|-------------------------------------------------|
+| PROJECT_NAME                                   | The name of the project                                                                            | myProject                                       |
+| SCENARIO                                       | The name of the scenario to run                                                                    | myScenario                                      |
+| COLLAB_URL                                     | The URL of the VCS to get the project                                                              | http://nts.mycompany.com/nts/svnroot/repository |
+| COLLAB_LOGIN (Optional)                        | The credential to checkout the project from the VCS                                                | me:A5C4Rj2uAJBwA==                              |
+| RESULT_NAME (Optional)                         | The name of the result                                                                             | Simple test                                     |
+| DESCRIPTION (Optional)                         | The description of the test result                                                                 | My CI automated test                            |
+| NTS_URL                                        | The NTS URL to lease the license                                                                   | http://nts.mycompany.com/nts                    |
+| NTS_LOGIN                                      | Credential to access the NTS                                                                       | me:A5C4RjYqGTHq6Pk2uAJBwA==                     |
+| LEASE_SERVER (Optional)                        | Which server used to get licence. The default value is NTS                                         | NTS or NLWEB                                    |
+| LICENSE_ID (Optional for NLWeb lease)          | The license ID to lease                                                                            | MCwCFQEsC7JH7fJM8Lk0FP3gkQ==                    |
+| VU_MAX                                         | Number of VU to lease                                                                              | 250                                             |
+| DURATION_MAX                                   | License lease duration in hours                                                                    | 2                                               |
+| PUBLISH_RESULT                                 | Where to publish result: NTS, WEB (for neoload web) or ALL                                         | ALL                                             |
+| NEOLOADWEB_URL (Optional)                      | The NeoLoad Web API URL                                                                            | https://neoload.mycompany.com:8080              |
+| NEOLOADWEB_TOKEN (Optional)                    | The NeoLoad Web API token                                                                          | 9be32780c6ec86d92jk0d1d25c                      | 
+| NEOLOADWEB_PROXY (Optional / Since 6.10)       | The proxy URL to access NeoLoad Web                                                                | http://login:password@myproxy                   |
+| NEOLOADWEB_WORKSPACE (Optional / Since 7.4)    | The NeoLoad Web Workspace (name or ID)                                                             | myWorkspace                                     |
+| NEOLOADWEB_TEST (Optional / Since 8.2)         | The NeoLoad Web Test (name or ID)                                                                  | myTest                                          |
+| CERTIFICATE_PATH (Optional / Since 2023.1)     | The path to certificate file to secure the communication with Load Generators and Monitoring Agent | /path/to/certificate.pkcs12                     |
+| CERTIFICATE_PASSWORD (Optional / Since 2023.1) | The password of the pkcs12 file                                                                    | MyPassword                                      |
+| OTHER_ARGS (Optional)                          | Other arguments                                                                                    | -variables env=preprod                          |
+| CONTROLLER_XMX (Optional)                      | Max memory of the controller                                                                       | -Xmx1024m                                       |
+| LOADGENERATOR_XMX (Optional)                   | Max memory of the Load Generator                                                                   | -Xmx2048m                                       |
 
 These parameters refer to the command line argument of `NeoLoadCmd`. For more information, see [List of arguments](https://www.neotys.com/redirect/redirect.php?target=docpage&reference=run.cmd).
 If the max memory limit is not set, it will be automatically set at the recommended ratio.
