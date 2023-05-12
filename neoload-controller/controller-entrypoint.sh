@@ -55,12 +55,6 @@ runController() {
     if [ "${NEOLOADWEB_TEST}" ]; then
         PARAMS="$PARAMS -nlwebTest ${NEOLOADWEB_TEST}"
     fi
-    if [ "${CERTIFICATE_PATH}" ]; then
-        PARAMS="$PARAMS -certificatePath ${CERTIFICATE_PATH}"
-    fi
-    if [ "${CERTIFICATE_PASSWORD}" ]; then
-        PARAMS="$PARAMS -certificatePassword ${CERTIFICATE_PASSWORD}"
-    fi
     if [ "${OTHER_ARGS}" ]; then
         PARAMS="$PARAMS ${OTHER_ARGS}"
     fi

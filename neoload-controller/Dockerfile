@@ -1,12 +1,12 @@
 #Be carefull openshift change the ID of the user on the fly. But this user is always in root group.
 
-FROM alpine:3.15.7 as builder
+FROM alpine:3.15.6 as builder
 
-ARG LIBERICA_URL=https://download.bell-sw.com/java/11.0.18+10/bellsoft-jre11.0.18+10-linux-x64-musl.tar.gz
-ARG LIBERICA_PATCH=https://github.com/Neotys-Labs/jre-patch-neoload/archive/refs/tags/jre-patch-11.0.18+10.tar.gz
+ARG LIBERICA_URL=https://download.bell-sw.com/java/11.0.15+10/bellsoft-jre11.0.15+10-linux-x64-musl.tar.gz
+ARG LIBERICA_PATCH=https://github.com/Neotys-Labs/jre-patch-neoload/archive/refs/tags/jre-patch-11.0.15+10.tar.gz
 
 
-ENV NL_VERSION=2023.1.0
+ENV NL_VERSION=9.1.3
 ARG URL=https://www.neotys.com/redirect/redirect.php?product=neoload&target=direct-download&os=linux&version=${NL_VERSION}&format=tar.gz
 
 WORKDIR /tmp/
@@ -48,10 +48,10 @@ RUN rm -rf /neoload/jre/*src.zip \
 RUN sed -i 's/wan.emulation.plugin=ipfw/wan.emulation.plugin=none/g' /neoload/conf/agent.properties
 RUN chmod -R g=u /neoload
 
-FROM alpine:3.15.7
+FROM alpine:3.15.6
 LABEL neoload.product.kind=Controller \
-      neoload.product.version=2023.1.0 \
-      neoload.product.build=20230411-34 \
+      neoload.product.version=9.1.3 \
+      neoload.product.build=20230421-110 \
       neoload.project.version=8.7
 
 
