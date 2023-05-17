@@ -6,7 +6,7 @@ ARG LIBERICA_URL=https://download.bell-sw.com/java/11.0.18+10/bellsoft-jre11.0.1
 ARG LIBERICA_PATCH=https://github.com/Neotys-Labs/jre-patch-neoload/archive/refs/tags/jre-patch-11.0.18+10.tar.gz
 
 
-ENV NL_VERSION=2023.1.0
+ENV NL_VERSION=2023.1.1
 ARG URL=https://www.neotys.com/redirect/redirect.php?product=neoload&target=direct-download&os=linux&version=${NL_VERSION}&format=tar.gz
 
 WORKDIR /tmp/
@@ -50,8 +50,8 @@ RUN chmod -R g=u /neoload
 
 FROM alpine:3.15.7
 LABEL neoload.product.kind=Controller \
-      neoload.product.version=2023.1.0 \
-      neoload.product.build=20230411-34 \
+      neoload.product.version=2023.1.1 \
+      neoload.product.build=20230420-40 \
       neoload.project.version=8.7
 
 
