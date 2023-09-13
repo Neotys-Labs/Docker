@@ -6,7 +6,7 @@ ARG LIBERICA_URL=https://download.bell-sw.com/java/11.0.18+10/bellsoft-jre11.0.1
 ARG LIBERICA_PATCH=https://github.com/Neotys-Labs/jre-patch-neoload/archive/refs/tags/jre-patch-11.0.18+10.tar.gz
 
 
-ENV NL_VERSION=2023.1.2
+ENV NL_VERSION=2023.1.3
 ARG URL=https://www.neotys.com/redirect/redirect.php?product=neoload_loadgenerator&target=direct-download&os=linux&version=${NL_VERSION}&format=tar.gz
 
 WORKDIR /tmp/
@@ -64,8 +64,8 @@ RUN echo "-Dneotys.logs.noredirection=false" >> /neoload/bin/LoadGeneratorAgent.
 FROM alpine:3.15.7
 
 LABEL neoload.product.kind=LoadGenerator \
-      neoload.product.version=2023.1.2 \
-      neoload.product.build=20230802-67 \
+      neoload.product.version=2023.1.3 \
+      neoload.product.build=20230905-85 \
       neoload.project.version=8.7
 
 ENV LOG_ALSO_TO_CONSOLE=true
