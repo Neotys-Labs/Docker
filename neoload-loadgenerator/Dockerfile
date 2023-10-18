@@ -1,12 +1,12 @@
 #Be carefull openshift change the ID of the user on the fly. But this user is always in root group.
 
-FROM alpine:3.15.9 as builder
+FROM alpine:3.18.3 as builder
 
 ARG LIBERICA_URL=https://download.bell-sw.com/java/11.0.19+7/bellsoft-jre11.0.19+7-linux-x64-musl.tar.gz
 ARG LIBERICA_PATCH=https://github.com/Neotys-Labs/jre-patch-neoload/archive/refs/tags/jre-patch-11.0.19+7.tar.gz
 
 
-ENV NL_VERSION=2023.2.0
+ENV NL_VERSION=2023.3.0
 ARG URL=https://www.neotys.com/redirect/redirect.php?product=neoload_loadgenerator&target=direct-download&os=linux&version=${NL_VERSION}&format=tar.gz
 
 WORKDIR /tmp/
@@ -61,11 +61,11 @@ ADD ./lglogs.xconfig ./logs.xconfig /neoload/conf/
 RUN echo "-Dneotys.logs.noredirection=false" >> /neoload/bin/LoadGeneratorAgent.vmoptions && \
     sed -i "s|collected.lg.logs.size.max=.*|collected.lg.logs.size.max=-1|g" /neoload/conf/agent.properties
 
-FROM alpine:3.15.9
+FROM alpine:3.18.3
 
 LABEL neoload.product.kind=LoadGenerator \
-      neoload.product.version=2023.2.0 \
-      neoload.product.build=20230706-27 \
+      neoload.product.version=2023.3.0 \
+      neoload.product.build=20231009-13 \
       neoload.project.version=8.8
 
 ENV LOG_ALSO_TO_CONSOLE=true
