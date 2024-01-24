@@ -1,9 +1,9 @@
 #Be carefull openshift change the ID of the user on the fly. But this user is always in root group.
 
-FROM alpine:3.18.3 as builder
+FROM alpine:3.18.5 as builder
 
 
-ENV NL_VERSION=2023.3.0
+ENV NL_VERSION=2023.4.0
 ARG URL=https://www.neotys.com/redirect/redirect.php?product=neoload_loadgenerator&target=direct-download&os=linux&version=${NL_VERSION}&format=tar.gz
 
 WORKDIR /tmp/
@@ -60,12 +60,12 @@ RUN echo "-Dneotys.logs.noredirection=false" >> /neoload/bin/LoadGeneratorAgent.
 
 FROM ubuntu:22.04
 
-ARG PLAYWRIGHT_CLASSPATH=/home/neoload/neoload/lib/playwright-1.38.0.jar:/home/neoload/neoload/lib/driver-bundle-1.38.0.jar:/home/neoload/neoload/lib/driver-1.38.0.jar
+ARG PLAYWRIGHT_CLASSPATH=/home/neoload/neoload/lib/playwright-1.39.0.jar:/home/neoload/neoload/lib/driver-bundle-1.39.0.jar:/home/neoload/neoload/lib/driver-1.39.0.jar
 
 LABEL neoload.product.kind=LoadGenerator \
-      neoload.product.version=2023.3.0 \
-      neoload.product.build=20231009-13 \
-      neoload.project.version=8.8
+      neoload.product.version=2023.4.0 \
+      neoload.product.build=20240122-38 \
+      neoload.project.version=8.9
 
 ENV LOG_ALSO_TO_CONSOLE=true
 ENV PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD 1
