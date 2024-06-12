@@ -58,6 +58,9 @@ The NeoLoad Load Generator files are located in /home/neoload/neoload
 
 > Note: The password of proxy can be encrypted with [our password scrambler](https://www.neotys.com/redirect/redirect.php?target=docpage&reference=passwordscrambler) with the prefixed encryption.
 
+Real-browser
+------------
+The real-browser-latest tag is an image of the NeoLoad Load Generator which supports running RealBrowser User Paths.
 
 License
 ---------
@@ -69,7 +72,7 @@ Supported Docker versions
 --------------------------------
 This image is officially supported on Docker version 1.11.0.
 Support for older versions (down to 1.6) is provided on a best-effort basis.
-Please see [the Docker installation documentation](https://docs.docker.com/installation/) for details on how to upgrade your Docker Deamon.
+Please see [the Docker installation documentation](https://docs.docker.com/installation/) for details on how to upgrade your Docker Daemon.
 
 User Feedback
 ------------------

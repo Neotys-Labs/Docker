@@ -107,6 +107,10 @@ If the max memory limit is not set, it will be automatically set at the recommen
 
 > Note: The passwords of NTS_LOGIN and COLLAB_LOGIN must be encrypted with [our password scrambler](https://www.neotys.com/redirect/redirect.php?target=docpage&reference=passwordscrambler). The proxy password can be encrypted too with the prefixed encryption.
 
+JMeter controller
+-------------------------
+The jmeter-latest tag is an alternative image of NeoLoad Controller that bundles a JMeter instance allowing to run JMeter tests from the NeoLoad Web platform.
+
 License
 ---------
 NeoLoad is licensed under the following [License Agreement](https://www.neotys.com/redirect/redirect.php?target=eula). You must agree to this license agreement to download and use the image.
