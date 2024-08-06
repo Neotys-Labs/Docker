@@ -22,6 +22,10 @@ runController() {
         PARAMS="$PARAMS -leaseServer NLWeb -leaseLicense ${VU_MAX}:${DURATION_MAX}"
     fi
 
+    if [ "${PROJECT_PASSWORD}" ]; then
+         PARAMS="$PARAMS -password ${PROJECT_PASSWORD}"
+    fi
+
     if [ "${COLLAB_URL}" ]; then
         PARAMS="$PARAMS -Collab ${COLLAB_URL}"
     fi
