@@ -3,7 +3,7 @@
 FROM alpine:3.18.6 as builder
 
 
-ENV NL_VERSION=2024.2.0
+ENV NL_VERSION=2024.2.1
 ARG URL=https://www.neotys.com/redirect/redirect.php?product=neoload_loadgenerator&target=direct-download&os=linux&version=${NL_VERSION}&format=tar.gz
 
 WORKDIR /tmp/
@@ -63,8 +63,8 @@ FROM ubuntu:22.04
 ARG PLAYWRIGHT_CLASSPATH=/home/neoload/neoload/lib/playwright-1.43.0.jar:/home/neoload/neoload/lib/driver-bundle-1.43.0.jar:/home/neoload/neoload/lib/driver-1.43.0.jar
 
 LABEL neoload.product.kind=LoadGenerator \
-      neoload.product.version=2024.2.0 \
-      neoload.product.build=20240606-37 \
+      neoload.product.version=2024.2.1 \
+      neoload.product.build=20240821-55 \
       neoload.project.version=8.10
 
 ENV LOG_ALSO_TO_CONSOLE=true
